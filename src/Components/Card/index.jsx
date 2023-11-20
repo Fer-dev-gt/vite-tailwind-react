@@ -6,8 +6,14 @@ const Card = (data) => {
   const { 
     count, 
     setCount, 
-    openProductDetail 
+    openProductDetail,
+    setProductToShow, 
   } = useContext(ShoppingCartContext);
+
+  const showProduct = (productDetail) => {
+    openProductDetail();
+    setProductToShow(productDetail)
+  }
 
   useEffect(() => {
     console.log('COUNT: ', count);
@@ -16,7 +22,7 @@ const Card = (data) => {
   return (
     <div 
     className='bg-white cursor-pointer w-56 h-64 rounded-lg shadow-md'
-    onClick={() => openProductDetail()}>
+    onClick={() => showProduct(data.data)}>
       <figure className='relative mb-2 w-full h-4/5'>
         <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xm m-2 px-3 py-0.5'>{data.data.category.name}</span>
         <img className='w-full h-full object-cover rounded-lg' src={data.data.images[0]} alt={data.data.title}/>

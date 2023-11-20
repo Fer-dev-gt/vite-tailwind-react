@@ -1,11 +1,30 @@
-import { useContext } from 'react'
-import { XMarkIcon } from '@heroicons/react/24/solid'
+import { useContext, useState } from 'react'
+import { XMarkIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 import './styles.css'
 
 const ProductDetail = () => {
 
-  const { isProductDetailOpen, closeProductDetail } = useContext(ShoppingCartContext)
+  const { 
+    isProductDetailOpen,
+    closeProductDetail,
+    productToShow
+  } = useContext(ShoppingCartContext);
+
+  const [image, setImage] = useState(0)
+
+  const nextImage = () => {
+    if(image === productToShow.images.length - 1 || image > 3) {
+      setImage(0)
+      console.log(productToShow.images[image]);
+    } else {
+      setImage(image + 1)
+      console.log(productToShow.images[image]);
+      console.log(image);
+    }
+  }
+
+  console.log(productToShow.images && productToShow.images.length);
 
   return (
     <aside 
@@ -14,14 +33,27 @@ const ProductDetail = () => {
         <h2 className='font-medium text-xl'>Detail</h2>
         <div>
           <XMarkIcon 
-            className='h-6 w-6'
+            className='h-6 w-6 cursor-pointer'
             onClick={closeProductDetail}/>
         </div>
       </div>
+      <figure className='px-6 relative'>
+        <img 
+          className='w-full h-full rounded-lg' 
+          src={productToShow.images && productToShow.images[image]} 
+          alt={productToShow.title}/>
+          <ChevronRightIcon
+            className={`${productToShow.images && (productToShow.images.lengt === 1 ? 'hidden' : '' )} w-8 h-8 fill-black cursor-pointer absolute top-1/2 right-6 transform -translate-y-1/2`}
+            onClick={() => nextImage()}
+          />
+      </figure>
+      <p className='flex flex-col p-6'>
+        <span className='font-medium text-2xl mb-2'>${productToShow.price}</span>
+        <span className='font-medium text-md'>{productToShow.title}</span>
+        <span className='font-ligh text-sm'>{productToShow.description}</span>
+      </p>
     </aside>
   )
 }
 
 export default ProductDetail
-
-
