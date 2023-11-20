@@ -8,11 +8,13 @@ const Card = (data) => {
     setCount, 
     openProductDetail,
     setProductToShow, 
+    setImage,
   } = useContext(ShoppingCartContext);
 
   const showProduct = (productDetail) => {
     openProductDetail();
-    setProductToShow(productDetail)
+    setProductToShow(productDetail);
+    setImage(0);
   }
 
   useEffect(() => {

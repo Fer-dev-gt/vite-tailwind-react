@@ -8,23 +8,22 @@ const ProductDetail = () => {
   const { 
     isProductDetailOpen,
     closeProductDetail,
-    productToShow
+    productToShow, 
+    image,
+    setImage,
   } = useContext(ShoppingCartContext);
 
-  const [image, setImage] = useState(0)
 
   const nextImage = () => {
-    if(image === productToShow.images.length - 1 || image > 3) {
+    if((image === productToShow.images.length - 1 && productToShow.images.length > 1) || image > 3) {
       setImage(0)
-      console.log(productToShow.images[image]);
+      console.log(productToShow.images);
     } else {
       setImage(image + 1)
-      console.log(productToShow.images[image]);
-      console.log(image);
+      console.log(productToShow.images);
+      console.log('IMAGEN',image+1);
     }
   }
-
-  console.log(productToShow.images && productToShow.images.length);
 
   return (
     <aside 
@@ -42,10 +41,10 @@ const ProductDetail = () => {
           className='w-full h-full rounded-lg' 
           src={productToShow.images && productToShow.images[image]} 
           alt={productToShow.title}/>
-          <ChevronRightIcon
+          {( productToShow.images && productToShow.images.length > 1) && <ChevronRightIcon
             className={`${productToShow.images && (productToShow.images.lengt === 1 ? 'hidden' : '' )} w-8 h-8 fill-black cursor-pointer absolute top-1/2 right-6 transform -translate-y-1/2`}
             onClick={() => nextImage()}
-          />
+          />}
       </figure>
       <p className='flex flex-col p-6'>
         <span className='font-medium text-2xl mb-2'>${productToShow.price}</span>
