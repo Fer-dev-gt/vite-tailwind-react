@@ -14,6 +14,8 @@ const CheckoutSideMenu = () => {
     setCartProducts,
     setCount,
     count,
+    setOrder,
+    order,
   } = useContext(ShoppingCartContext);
   console.log('Se han actualizado los productos', cartProducts);
 
@@ -21,6 +23,21 @@ const CheckoutSideMenu = () => {
     const filteredProducts = cartProducts.filter(product => product.id !== id);
     setCartProducts(filteredProducts);
     setCount(count - quantity);
+  }
+
+  const handleCheckout = () => {
+    const orderToAdd = {
+      date: new Date(),
+      products: cartProducts,
+      totalProducts: cartProducts.length,
+      totalItems: count,
+      totalPrice: totalPrice(cartProducts),
+    }
+
+    setOrder([...order, orderToAdd]);
+    setCartProducts([]);
+    setCount(0);
+    console.log('Se ha agregado una orden', orderToAdd);
   }
 
 
@@ -35,7 +52,7 @@ const CheckoutSideMenu = () => {
             onClick={closeCheckoutSideMenu}/>
         </div>
       </div>
-      <div className='px-6'>
+      <div className='px-6 flex-1'>
       {
         cartProducts.map(product => (
           <OrderCard 
@@ -55,6 +72,9 @@ const CheckoutSideMenu = () => {
           <span className='font-light'>Total: </span>
           <span className='font-medium text-2xl'>${totalPrice(cartProducts)}</span>
         </p>
+        <button 
+          className='bg-black text-white w-full py-3 rounded-lg mt-2 mb-6'
+          onClick={() => handleCheckout()}>Checkout</button>
       </div>
     </aside>
   )
