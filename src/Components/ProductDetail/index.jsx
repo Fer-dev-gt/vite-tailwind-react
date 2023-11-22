@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { XMarkIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 import './styles.css'

@@ -11,18 +11,33 @@ const Card = ({data}) => {
     setImage,
     setCartProducts,
     cartProducts,
+    openCheckoutSideMenu,
+    closeCheckoutSideMenu,
+    closeProductDetail,
   } = useContext(ShoppingCartContext);
 
   const showProduct = (productDetail) => {
+    closeCheckoutSideMenu();
     openProductDetail();
     setProductToShow(productDetail);
     setImage(0);
   }
 
   const addProductsToCart = (ProductData) => {
-    setCount(count + 1);
-    setCartProducts([...cartProducts, ProductData]);
-    console.log('Se han actualizado los producto', cartProducts);
+    openCheckoutSideMenu();
+    closeProductDetail();
+
+    const productExists = cartProducts.some(el => el.id === ProductData.id); // dará true si el producto ya se encuentra en el carrito
+
+		if (productExists) {    // valida la existencia del producto
+			const productCart = cartProducts.find(el => el.id === ProductData.id); // busca el producto
+			productCart.quantity += 1; // aumenta la cantidad en 1
+		} else {
+			ProductData.quantity = 1; // si el producto no está, le agrega la propiedad quantity con valor uno, y luego setea el carrito agregando ese producto
+			setCartProducts([...cartProducts, ProductData]);
+		}
+
+		setCount(count + 1);
   }
 
   useEffect(() => {
