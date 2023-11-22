@@ -10,8 +10,17 @@ const CheckoutSideMenu = () => {
     isCheckoutSideMenuOpen,
     closeCheckoutSideMenu,
     cartProducts,
+    setCartProducts,
+    setCount,
+    count,
   } = useContext(ShoppingCartContext);
   console.log('Se han actualizado los productos', cartProducts);
+
+  const handleDelete = (id, quantity) => {
+    const filteredProducts = cartProducts.filter(product => product.id !== id);
+    setCartProducts(filteredProducts);
+    setCount(count - quantity);
+  }
 
 
   return (
@@ -30,10 +39,12 @@ const CheckoutSideMenu = () => {
         cartProducts.map(product => (
           <OrderCard 
             key={product.id}
+            id={product.id}
             title={product.title}
             imageUrl={product.images}
             price={product.price}
             quantity={product.quantity}
+            handleDelete={handleDelete}
           />)
         )
       }
