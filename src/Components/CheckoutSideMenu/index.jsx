@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context'
 import OrderCard from '../../Components/OrderCard'
-import { totalPrice } from '../../Utils'
+import { totalPrice, dateTime } from '../../Utils'
 import './styles.css'
 
 const CheckoutSideMenu = () => {
@@ -28,7 +28,7 @@ const CheckoutSideMenu = () => {
 
   const handleCheckout = () => {
     const orderToAdd = {
-      date: new Date(),
+      date: dateTime(),
       products: cartProducts,
       totalProducts: cartProducts.length,
       totalItems: count,
