@@ -6,7 +6,24 @@ import { ShoppingCartContext } from '../../Context';
 
 function Home() {
 
-  const { items, setSearchByTitle } = useContext(ShoppingCartContext);
+  const { 
+    items, 
+    setSearchByTitle,
+    searchByTitle, 
+    filteredItems,
+  } = useContext(ShoppingCartContext);
+
+  const renderView = () => {
+    const itemsToRender = searchByTitle?.length > 0 ? filteredItems : items;
+
+    if (itemsToRender?.length > 0) {
+      return itemsToRender.map(item => (
+        <Card key={item.id} data={item} />
+      ));
+    } else {
+      return <p className='col-span-4 flex justify-center'>No Results Found :o</p>;
+    }
+  };
 
   return (
     <Layout>
@@ -20,11 +37,7 @@ function Home() {
         onChange={(event) => setSearchByTitle(event.target.value) }
       />
       <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
-        {
-          items?.map(item => (
-            <Card key={item.id} data={item}/>
-          ))
-        }
+        {renderView()}
       </div>
       <ProductDetail />
     </Layout>
