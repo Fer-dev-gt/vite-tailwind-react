@@ -14,14 +14,15 @@ function MyOrders() {
         <h1>My Orders</h1>
       </div>
       {
-        order.map((order, index) => {
-          <Link key={index} to={`/my-orders/${order.id}`}>
-            <OrdersCard 
-              totalPrice={order.totalPrice} 
-              totalProducts={order.totalProducts}
-            />
+        order.map((order, index) => (
+          <Link key={index} to={`/my-orders/${index}`}>
+          <OrdersCard 
+            totalPrice={order.totalPrice} 
+            totalProducts={order.totalProducts}
+            date={order.date}
+          />
           </Link>
-        })
+        ))
       }
     </Layout>
   )
