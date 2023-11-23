@@ -14,7 +14,8 @@ function Home() {
   } = useContext(ShoppingCartContext);
 
   const renderView = () => {
-    const itemsToRender = searchByTitle?.length > 0 ? filteredItems : items;
+    let itemsToRender = searchByTitle?.length > 0 ? filteredItems : items;
+    filteredItems?.length > 0 ? itemsToRender = filteredItems : itemsToRender = null;
 
     if (itemsToRender?.length > 0) {
       return itemsToRender.map(item => (

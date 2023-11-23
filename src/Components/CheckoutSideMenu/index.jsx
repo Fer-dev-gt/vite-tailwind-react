@@ -18,7 +18,6 @@ const CheckoutSideMenu = () => {
     setOrder,
     order,
   } = useContext(ShoppingCartContext);
-  console.log('Se han actualizado los productos', cartProducts);
 
   const handleDelete = (id, quantity) => {
     const filteredProducts = cartProducts.filter(product => product.id !== id);

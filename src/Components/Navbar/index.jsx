@@ -4,7 +4,7 @@ import { ShoppingBagIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context';
 
 const Navbar = () => {
-  const { count } = useContext(ShoppingCartContext)
+  const { count, setSearchByCategory } = useContext(ShoppingCartContext)
   const activeStyle = 'underline underline-offset-4';
   const isRouteActive = (isActive) => isActive ? activeStyle : undefined
 
@@ -19,6 +19,7 @@ const Navbar = () => {
         <li>
           <NavLink 
             to='/'
+            onClick={() => setSearchByCategory()}
             className={({ isActive }) => 
               isRouteActive(isActive)
             }
@@ -29,6 +30,7 @@ const Navbar = () => {
         <li>
           <NavLink 
             to='/clothes'
+            onClick={() => setSearchByCategory('clothes')}
             className={({ isActive }) => 
               isRouteActive(isActive)
             }
@@ -39,6 +41,7 @@ const Navbar = () => {
         <li>
           <NavLink 
             to='/electronics'
+            onClick={() => setSearchByCategory('electronics')}
             className={({ isActive }) => 
               isRouteActive(isActive)
             }
@@ -49,6 +52,7 @@ const Navbar = () => {
         <li>
           <NavLink 
             to='/furnitures'
+            onClick={() => setSearchByCategory('furnitures')}
             className={({ isActive }) => 
               isRouteActive(isActive)
             }
@@ -59,6 +63,7 @@ const Navbar = () => {
         <li>
           <NavLink 
             to='/toys'
+            onClick={() => setSearchByCategory('toys')}
             className={({ isActive }) => 
               isRouteActive(isActive)
             }
@@ -69,6 +74,7 @@ const Navbar = () => {
         <li>
           <NavLink 
             to='/others'
+            onClick={() => setSearchByCategory('others')}
             className={({ isActive }) => 
               isActive ? activeStyle : undefined
             }
