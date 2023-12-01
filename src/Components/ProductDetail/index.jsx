@@ -17,11 +17,8 @@ const ProductDetail = () => {
   const nextImage = () => {
     if((image === productToShow.images.length - 1 && productToShow.images.length > 1) || image > 3) {
       setImage(0)
-      console.log(productToShow.images);
     } else {
       setImage(image + 1)
-      console.log(productToShow.images);
-      console.log('IMAGEN',image+1);
     }
   }
 

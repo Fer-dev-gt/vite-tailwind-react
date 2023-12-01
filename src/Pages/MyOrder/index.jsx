@@ -10,7 +10,6 @@ function MyOrder() {
 
   const { order } = useContext(ShoppingCartContext);
   let currentPath = window.location.pathname.split('/').slice(-1)[0];
-  console.log(currentPath);
   if(currentPath === 'last') currentPath = order.length - 1;
 
   return (

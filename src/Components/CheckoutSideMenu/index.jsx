@@ -17,6 +17,7 @@ const CheckoutSideMenu = () => {
     count,
     setOrder,
     order,
+    setSearchByTitle,
   } = useContext(ShoppingCartContext);
 
   const handleDelete = (id, quantity) => {
@@ -38,6 +39,7 @@ const CheckoutSideMenu = () => {
     setOrder([...order, orderToAdd]);
     setCartProducts([]);
     setCount(0);
+    setSearchByTitle(null);
     console.log('Se ha agregado una orden', orderToAdd);
   }
 
