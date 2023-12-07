@@ -20,11 +20,13 @@ const CheckoutSideMenu = () => {
     setSearchByTitle,
   } = useContext(ShoppingCartContext);
 
+  
   const handleDelete = (id, quantity) => {
     const filteredProducts = cartProducts.filter(product => product.id !== id);
     setCartProducts(filteredProducts);
     setCount(count - quantity);
   }
+
 
   const handleCheckout = () => {
     const orderToAdd = {

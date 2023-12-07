@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { PlusIcon, CheckIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartContext } from '../../Context';
 
@@ -14,6 +14,7 @@ const Card = ({data}) => {
     openCheckoutSideMenu,
     closeCheckoutSideMenu,
     closeProductDetail,
+    setOpenNotification,
   } = useContext(ShoppingCartContext);
 
 
@@ -26,6 +27,12 @@ const Card = ({data}) => {
 
 
   const addProductsToCart = (event, ProductData) => {
+    // Animación de notificación al agregar un producto al carrito
+    setOpenNotification(true);
+    setTimeout(() => {
+      setOpenNotification(false);
+    }, 1000);
+
     event.stopPropagation();
     openCheckoutSideMenu();
     closeProductDetail();

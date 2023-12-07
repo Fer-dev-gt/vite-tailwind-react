@@ -35,6 +35,9 @@ export const ShoppingCartProvider = ({children}) => {
 
   // Get products - Search by category
   const [searchByCategory, setSearchByCategory] = useState(null);
+
+  // Open Notification - Add product to cart
+  const [openNotification, setOpenNotification] = useState(false);
   
 
   useEffect(() => {
@@ -93,6 +96,8 @@ export const ShoppingCartProvider = ({children}) => {
       filteredItems,
       setSearchByCategory,
       searchByCategory,
+      openNotification,
+      setOpenNotification,
     }}>
       {children}
     </ShoppingCartContext.Provider>
