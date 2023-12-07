@@ -33,6 +33,12 @@ function MyOrder() {
           />)
         )
       }
+      <div className='flex w-80 mt-4'>
+        <p className='flex w-full items-center justify-between'>
+          <span className='font-normal text-xl'>Total: </span>
+          <span className='font-medium text-2xl '>${order?.[currentPath]?.totalPrice}</span>
+        </p>
+      </div>
       </div>
     </Layout>
   )
