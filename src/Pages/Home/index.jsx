@@ -32,7 +32,7 @@ function Home() {
         <h1 className='font-medium text-xl'>Exclusive Products</h1>
       </div>
       <input 
-        type='text' 
+        type='search' 
         placeholder='Search a product'
         className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none'
         onChange={(event) => setSearchByTitle(event.target.value) }
