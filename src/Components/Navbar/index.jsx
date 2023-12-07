@@ -55,7 +55,7 @@ const Navbar = () => {
         <li>
           <NavLink 
             to='/furnitures'
-            onClick={() => setSearchByCategory('furnitures')}
+            onClick={() => setSearchByCategory('furniture')}
             className={({ isActive }) => 
               isRouteActive(isActive)
             }
