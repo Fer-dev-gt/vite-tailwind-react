@@ -16,7 +16,7 @@ function Home() {
   const renderView = () => {
     let itemsToRender = searchByTitle?.length > 0 ? filteredItems : items;
     filteredItems?.length > 0 ? itemsToRender = filteredItems : itemsToRender = null;
-
+ 
     if (itemsToRender?.length > 0) {
       return itemsToRender.map(item => (
         <Card key={item.id} data={item} />

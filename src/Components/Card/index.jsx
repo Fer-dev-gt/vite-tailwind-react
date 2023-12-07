@@ -31,8 +31,9 @@ const Card = ({data}) => {
     closeProductDetail();
     setCount(count + 1);  
 
-    const productExists = cartProducts.some(product => product.id === ProductData.id);          // dará true si el producto ya se encuentra en el carrito
+    const productExists = cartProducts.some(product => product.id === ProductData.id);          // Validamos si el producto ya se encuentra en el carrito, de ser así, aumentamos la cantidad en 1, de lo contrario, le agregamos la propiedad quantity con valor uno, y luego seteamos el carrito agregando ese producto
 
+    // Solo se mostrará una Card por producto, por lo tanto, si el producto ya está en el carrito, solo aumentará la cantidad en 1, de lo contrario, se agregará al carrito
 		if (productExists) {                                                                        // valida la existencia del producto
 			const productCart = cartProducts.find(product => product.id === ProductData.id);          // busca el producto
 			productCart.quantity += 1;                                                                // aumenta la cantidad en 1
